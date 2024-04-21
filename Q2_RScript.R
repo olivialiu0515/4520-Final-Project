@@ -9,11 +9,9 @@ process_file <- function(file_path) {
   
   # Read the file content
   data <- fread(file_path, header = FALSE)
-  # Initial cleaning for non-missing longitude and latitude
-  non_missing <- data[!data$V4 %in% c(-9999, -9999.0) & !data$V5 %in% c(-9999, -9999.0), ]
   
-  if (nrow(non_missing) > 0) {
-    first_row <- non_missing[1, ]
+  if (nrow(data) > 0) {
+    first_row <- data[1, ]
     identifier <- first_row$V1
     longitude <- first_row$V4
     latitude <- first_row$V5
