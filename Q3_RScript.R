@@ -11,7 +11,6 @@ files <- list.files(root_directory, pattern = "\\.txt$", full.names = TRUE, recu
 # use function to rbind all dataset into a dataset
 all_data <- rbindlist(lapply(files, fread))
 
-
 all_data <- all_data %>%
   select(1:11)
 
@@ -39,12 +38,14 @@ matched_indices <- match(all_data$WBANNO, summary$Identifier)
 all_data$state <- summary$State[matched_indices]
 all_data$station_name <- summary$StationName[matched_indices]
 
+# alter the date format from integer to date
+all_data$LST_DATE <- as.Date(as.character(all_data$LST_DATE), format = "%Y%m%d")
 
-#change all missing values into NAs (turn extreme values into NAs)
+#change all missing values into NA (turn extreme values into NA)
 all_data[all_data < -1000] <- NA
 
 #rearrange the order of columns
 all_data <- all_data %>%
   select(WBANNO, state, station_name,everything())
 
-write.csv(all_data, "/Users/olivialiu/Desktop/all_daily_data.csv")
+saveRDS(all_data, "/Users/olivialiu/Desktop/all_daily_data.RData")
