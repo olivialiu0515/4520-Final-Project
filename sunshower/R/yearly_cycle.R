@@ -10,8 +10,6 @@
 #'         day_of_year ranges from 1 to the number of days in the provided year, and
 #'         expected_temp contains the predicted temperatures for these days.
 #' @examples
-#' # Assuming 'all_data' is a predefined dataframe with columns WBANNO, LST_DATE, and T_DAILY_MEAN
-#' df <- all_data
 #' # Estimate the temperature cycle for station 12345 in the year 2023
 #' yearly_cycle <- estimate_yearly_cycle(12345, "2023")
 #' plot(yearly_cycle$day_of_year, yearly_cycle$expected_temp, type = "l",
@@ -19,7 +17,6 @@
 #'      xlab = "Day of the Year", ylab = "Temperature (°C)")
 #' @export
 
-df <- all_data
 estimate_yearly_cycle <- function(station_id, year) {
   data <- df %>% filter(WBANNO == station_id) %>% filter(format(LST_DATE, "%Y") == year)
   data$day_of_year <- yday(data[["LST_DATE"]])
