@@ -1,0 +1,24 @@
+df <- all_data
+estimate_yearly_cycle <- function(station_id, year) {
+  data <- df %>% filter(WBANNO == station_id) %>% filter(format(LST_DATE, "%Y") == year)
+  data$day_of_year <- yday(data[["LST_DATE"]])
+  days <- max(data$day_of_year)
+  formula_str <- T_DAILY_MEAN ~ a + b * cos(2 * pi * day_of_year / days) + c * sin(2 * pi * day_of_year / days)
+  control_settings <- nls.control(maxiter = 200, tol = 1e-5, minFactor = 1/1024)
+  
+  # Fit model using nls
+  fit <- nls(
+    formula = formula_str,
+    data = data,
+    start = list(a = mean(data$T_DAILY_MEAN, na.rm = TRUE), b = 0, c = 0),
+    control = control_settings,
+    na.action = na.exclude
+  )
+  
+  newdata <- data.frame(day_of_year = 1:days)
+  expected_temp <- predict(fit, newdata = newdata)
+  
+  result <- data.frame(day_of_year = 1:days, expected_temp = expected_temp)
+  
+  return(result)
+}
