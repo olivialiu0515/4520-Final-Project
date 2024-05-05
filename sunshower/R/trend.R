@@ -1,4 +1,22 @@
-estimate_temp_trend3 <- function(station_id) {
+#' Estimate temperature trends for a specific station
+#'
+#' This function models the temperature trend and seasonal variations at a specific weather station
+#' using a Generalized Additive Model (GAM). The model includes a linear trend component for the
+#' year and a smooth seasonal component for the day of the year. 
+#'
+#' @param station_id The identifier for the weather station, which could be numeric or string.
+#' @return A dataframe with columns for year, day_of_year, and predicted_temp. The predicted_temp
+#'         column contains the estimated average daily temperatures for each day of the year across
+#'         the specified range of years.
+#' @examples
+#' # Estimate temperature trends for station 12345
+#' trends <- estimate_temp_trend(12345)
+#' plot(trends$day_of_year, trends$predicted_temp, type = "l",
+#'      main = "Predicted Temperature Trends",
+#'      xlab = "Day of the Year", ylab = "Predicted Temperature (°C)")
+#' @export
+
+estimate_temp_trend <- function(station_id) {
   data <- df %>%
     filter(WBANNO == station_id) %>%
     mutate(date = as.Date(LST_DATE), year = year(date), day_of_year = yday(date)) %>%

@@ -1,4 +1,21 @@
-# Function to create a grid of points within the contiguous USA
+#' Create a grid of points within the contiguous USA
+#'
+#' This function generates a grid of longitude and latitude points within the geographic
+#' boundaries of the contiguous United States. The resolution of the grid, which determines
+#' the spacing between grid points, can be specified. Points are filtered to ensure they
+#' fall within the actual boundaries of the USA as defined by the 'maps' package.
+#'
+#' @param resolution The resolution in degrees between points in the grid.
+#'                   Default is 1 degree.
+#' @return A dataframe containing two columns, lon and lat, which represent the longitude
+#'         and latitude of each point within the contiguous USA.
+#' @examples
+#' # Create a grid with a resolution of 1 degree
+#' usa_grid <- create_usa_grid()
+#' # Create a higher resolution grid of 0.5 degrees
+#' finer_usa_grid <- create_usa_grid(0.5)
+#' @export
+
 create_usa_grid <- function(resolution = 1) {
   # Get USA map data
   usa_map <- maps::map("usa", plot = FALSE)
