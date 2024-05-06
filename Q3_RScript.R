@@ -3,7 +3,7 @@ library(data.table)
 library(dplyr)
 
 # Set the root directory
-root_directory <- "/Users/olivialiu/Desktop/4520-Final-Project/raw_data"
+root_directory <- "/Users/gengxingshuo/Desktop/4520-Final-Project/raw_data"
 
 # List all CSV files within the root directory
 files <- list.files(root_directory, pattern = "\\.txt$", full.names = TRUE, recursive = TRUE)
@@ -29,7 +29,7 @@ all_data <- all_data %>%
   rename(SOLARAD_DAILY = V11)
 
 #load the csv file containing each station's summary information
-summary <- read.csv("/Users/olivialiu/Desktop/4520-Final-Project/stations_info.csv")
+summary <- read.csv("/Users/gengxingshuo/Desktop/4520-Final-Project/stations_info.csv")
 
 #match two dataset based on the station identifier number
 matched_indices <- match(all_data$WBANNO, summary$Identifier)
@@ -48,5 +48,9 @@ all_data[all_data < -1000] <- NA
 all_data <- all_data %>%
   select(WBANNO, state, station_name,everything())
 
-saveRDS(all_data, "/Users/olivialiu/Desktop/all_daily_data.RData")
+save(all_data, file = "/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_daily_data.Rdata")
+datt <- load("/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_daily_data.Rdata")
+
+
+
 
