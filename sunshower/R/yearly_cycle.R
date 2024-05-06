@@ -10,11 +10,10 @@
 #'         day_of_year ranges from 1 to the number of days in the provided year, and
 #'         expected_temp contains the predicted temperatures for these days.
 #' @examples
-#' # Estimate the temperature cycle for station 12345 in the year 2023
-#' yearly_cycle <- estimate_yearly_cycle(12345, "2023")
-#' plot(yearly_cycle$day_of_year, yearly_cycle$expected_temp, type = "l",
-#'      main = "Estimated Yearly Temperature Cycle",
-#'      xlab = "Day of the Year", ylab = "Temperature (°C)")
+#' # Estimate the temperature cycle for station 53878 in the year 2023
+#' df <- data("all_daily_data")
+#' yearly_cycle <- estimate_yearly_cycle(53878, "2023")
+#' print(yearly_cycle)
 #' @import dplyr
 #' @importFrom stats nls predict
 #' @export
@@ -25,7 +24,7 @@ estimate_yearly_cycle <- function(station_id, year) {
   days <- max(data$day_of_year)
   formula_str <- T_DAILY_MEAN ~ a + b * cos(2 * pi * day_of_year / days) + c * sin(2 * pi * day_of_year / days)
   control_settings <- nls.control(maxiter = 200, tol = 1e-5, minFactor = 1/1024)
-  
+
   # Fit model using nls
   fit <- nls(
     formula = formula_str,
@@ -34,11 +33,11 @@ estimate_yearly_cycle <- function(station_id, year) {
     control = control_settings,
     na.action = na.exclude
   )
-  
+
   newdata <- data.frame(day_of_year = 1:days)
   expected_temp <- predict(fit, newdata = newdata)
-  
+
   result <- data.frame(day_of_year = 1:days, expected_temp = expected_temp)
-  
+
   return(result)
 }

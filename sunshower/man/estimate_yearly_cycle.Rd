@@ -22,9 +22,8 @@ station and year using a non-linear least squares (nls) model. It fits a cosine 
 function to the day of the year to capture seasonal temperature variations.
 }
 \examples{
-# Estimate the temperature cycle for station 12345 in the year 2023
-yearly_cycle <- estimate_yearly_cycle(12345, "2023")
-plot(yearly_cycle$day_of_year, yearly_cycle$expected_temp, type = "l",
-     main = "Estimated Yearly Temperature Cycle",
-     xlab = "Day of the Year", ylab = "Temperature (°C)")
+# Estimate the temperature cycle for station 53878 in the year 2023
+df <- data("all_daily_data")
+yearly_cycle <- estimate_yearly_cycle(53878, "2023")
+print(yearly_cycle)
 }

@@ -20,9 +20,8 @@ using a Generalized Additive Model (GAM). The model includes a linear trend comp
 year and a smooth seasonal component for the day of the year.
 }
 \examples{
-# Estimate temperature trends for station 12345
-trends <- estimate_temp_trend(12345)
-plot(trends$day_of_year, trends$predicted_temp, type = "l",
-     main = "Predicted Temperature Trends",
-     xlab = "Day of the Year", ylab = "Predicted Temperature (°C)")
+# Estimate temperature trends for station 53878
+df <- data("all_daily_data")
+trends <- estimate_temp_trend(53878)
+print(trends)
 }

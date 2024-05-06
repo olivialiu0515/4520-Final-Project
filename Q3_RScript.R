@@ -14,7 +14,7 @@ all_data <- rbindlist(lapply(files, fread))
 all_data <- all_data %>%
   select(1:11)
 
-#rename columns 
+#rename columns
 all_data <- all_data %>%
   rename(WBANNO = V1) %>%
   rename(LST_DATE = V2) %>%
@@ -48,9 +48,7 @@ all_data[all_data < -1000] <- NA
 all_data <- all_data %>%
   select(WBANNO, state, station_name,everything())
 
-save(all_data, file = "/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_daily_data.Rdata")
-datt <- load("/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_daily_data.Rdata")
-
+save(all_data, file = "/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_data.Rdata")
 
 
 

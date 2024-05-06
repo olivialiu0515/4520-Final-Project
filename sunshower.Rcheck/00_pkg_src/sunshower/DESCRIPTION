@@ -1,0 +1,19 @@
+Package: sunshower
+Type: Package
+Title: US Climate Reference Network for R
+Version: 0.1.0
+Author: person("Leslie", "Geng", email = "xg286@cornell.edu", role = c("aut", "cre")), 
+        person("Huanting", "Liu", email = "hl2238@cornell.edu", role = c("aut", "cre"))
+Description: Functions for analyzing and visualizing climate patterns across the United States 
+    using data from the US Climate Reference Network.
+    \url{https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/}.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr, maps, lubridate, mgcv, ggplot2, RColorBrewer, GpGp
+Suggests: rmarkdown, knitr, testthat(>= 3.0.0)
+VignetteBuilder: knitr
+RoxygenNote: 7.3.1
+NeedsCompilation: no
+Packaged: 2024-05-06 20:44:36 UTC; gengxingshuo
+Depends: R (>= 3.5.0)

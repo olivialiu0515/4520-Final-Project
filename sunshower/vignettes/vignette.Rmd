@@ -27,7 +27,7 @@ library(GpGp)
 
 ```{r}
 # Time Series for Station 53878
-data("all_data.Rdata")
+data(all_data)
 print(all_data)
 station1_data <- timeser(all_data, 53878)
 print(station1_data)
@@ -35,7 +35,7 @@ print(station1_data)
 
 ```{r}
 # Yearly cycle for station 53878 in 2023
-data("all_data")
+data("all_data", package = "sunshower")
 yearly_cycle <- estimate_yearly_cycle(53878, "2023")
 print(yearly_cycle)
 ```

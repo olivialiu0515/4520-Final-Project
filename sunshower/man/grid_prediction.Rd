@@ -18,19 +18,16 @@ A data frame or matrix containing the predicted values for each grid point
         in the `usa_grid`. Each row corresponds to a grid point.
 }
 \description{
-This function is used to make different weather predictions on USA map grid points of various resolutions; 
+This function is used to make different weather predictions on USA map grid points of various resolutions;
 the predictions made depend on the statistic the user is interested in
 }
 \examples{
 # estimate the temperature on March 1st, 2023 for USA map grid points with a given resolution
-#create an example USA map grid points with resolution of 1
+# create an example USA map grid points with resolution of 1
+df <- data("all_daily_data")
 usa_grid <- create_usa_grid(resolution = 1)
-#create an example station data with LONGITUDE and LATITUDE information used for prediction
-data <- data.frame(LONGITUDE = c(-158.61, -164.08, -145.35, -148.46, -150.87,-147.51), 
-                    LATITUDE = c(59.28, 61.35, 60.47, 70.16, 63.45,64.97))
-# create an example list of statistic of the stations used to predict 
-prediction_value <- c( -6.9 -13.4  -1.3 -28.4 -10.0 -11.7)
-grid_prediction <- grid_prediction(usa_grid, data, prediction_value)
-print(grid_prediction)
-
+data2 <- df \%>\% filter(LST_DATE == "2023-03-01")
+prediction_value <- data2$T_DAILY_MEAN
+grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
+print(grid_pred)
 }

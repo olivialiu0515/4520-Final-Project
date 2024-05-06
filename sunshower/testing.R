@@ -1,8 +1,10 @@
 devtools::load_all()
 
-timeser(all_data, station_id = 63829)
+data(all_data, package = "sunshower")
 
 devtools::document()
+
+devtools::build()
 
 ?create_usa_grid
 ?timeser
@@ -10,7 +12,7 @@ devtools::document()
 
 devtools::test()
 
-
+View(all_data)
 install.packages("fields")
 library(fields)
 
@@ -19,6 +21,7 @@ library(ggplot2)
 library(RColorBrewer)
 library(GpGp)
 
+View(df)
 
 devtools::check()
 

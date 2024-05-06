@@ -9,7 +9,7 @@ map_predictions(grid_prediction, usa_grid)
 \arguments{
 \item{grid_prediction}{weather predictions made for USA map grids.}
 
-\item{usa_grid}{a list of grid points of USA map with a longitude column and a latitude column. 
+\item{usa_grid}{a list of grid points of USA map with a longitude column and a latitude column.
 This should be identical with the one used to make predictions.}
 }
 \value{
@@ -21,15 +21,14 @@ This function utilizes predictions generated for USA maps grid points to make a 
 Note that the length of predictions should match the grid points.
 }
 \examples{
-# create a heatmap for the estamted temperature on March 1st, 2023 for USA map grid points with a given resolution
-#create an example USA map grid points with resolution of 1
+# create a heatmap for the estimated temperature on March 1st, 2023 for USA map
+# grid points with a given resolution
+# create an example USA map grid points with resolution of 1
+df <- data("all_daily_data")
 usa_grid <- create_usa_grid(resolution = 1)
-#create an example station data with LONGITUDE and LATITUDE information used for prediction
-data <- data.frame(LONGITUDE = c(-158.61, -164.08, -145.35, -148.46, -150.87,-147.51), 
-                    LATITUDE = c(59.28, 61.35, 60.47, 70.16, 63.45,64.97))
-# create an example list of statistic of the stations used to predict 
-prediction_value <- c( -6.9 -13.4  -1.3 -28.4 -10.0 -11.7)
-grid_prediction <- grid_prediction(usa_grid, data, prediction_value)
-map_predictions(predictions, usa_grid)
-
+data2 <- df \%>\% filter(LST_DATE == "2023-03-01")
+prediction_value <- data2$T_DAILY_MEAN
+grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
+output <- map_predictions(grid_pred, usa_grid)
+print(output)
 }

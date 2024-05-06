@@ -23,6 +23,8 @@ fall within the actual boundaries of the USA as defined by the 'maps' package.
 \examples{
 # Create a grid with a resolution of 1 degree
 usa_grid <- create_usa_grid()
+plot(usa_grid)
 # Create a higher resolution grid of 0.5 degrees
 finer_usa_grid <- create_usa_grid(0.5)
+plot(finer_usa_grid)
 }

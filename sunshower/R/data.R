@@ -4,21 +4,20 @@
 #' A dataset comprising daily weather observations from weather stations in the US.
 #' The dataset includes various meteorological measurements collected over several years.
 #'
-#' @format A data frame with observations on the following 10 variables:
+#' @format A dataframe with 1,134,354 row and 13 columns
 #' \describe{
-#'   \item{WBANNO}{\code{integer} The weather station WBAN number}
-#'   \item{state_name}{\code{character} The state where the station is located}
-#'   \item{station_name}{\code{character} The name of the station}
-#'   \item{LST_DATE}{\code{integer} The date of observation in YYYYMMDD format}
-#'   \item{CRX_VN}{\code{numeric} Version number of the data}
-#'   \item{LONGITUDE}{\code{numeric} Longitude of the weather station}
-#'   \item{LATITUDE}{\code{numeric} Latitude of the weather station}
-#'   \item{T_DAILY_MAX}{\code{numeric} Maximum daily temperature in degrees Celsius, missing values are marked as \code{NA}}
-#'   \item{T_DAILY_MIN}{\code{numeric} Minimum daily temperature in degrees Celsius, missing values are marked as \code{NA}}
-#'   \item{T_DAILY_AVG}{\code{numeric} Average daily temperature in degrees Celsius, missing values are marked as \code{NA}}
-#'   \item{P_DAILY_CALC}{\code{numeric} Calculated daily precipitation in millimeters, missing values are marked as \code{NA}}
-#'   \item{SOLARAD_DAILY}{\code{numeric} Daily solar radiation in MJ/m^2, missing values are marked as \code{NA}}
+#'   \item{WBANNO}{The weather station WBAN number}
+#'   \item{state}{The state where the station is located}
+#'   \item{station_name}{The name of the station}
+#'   \item{LST_DATE}{The date of observation in YYYYMMDD format}
+#'   \item{CRX_VN}{Version number of the data}
+#'   \item{LONGITUDE}{Longitude of the weather station}
+#'   \item{LATITUDE}{Latitude of the weather station}
+#'   \item{T_DAILY_MAX}{Maximum daily temperature in degrees Celsius}
+#'   \item{T_DAILY_MIN}{Minimum daily temperature in degrees Celsius}
+#'.  \item{T_DAILY_MEAN}{Mean daily temperature in degrees Celsius, by (Max + Min) / 2}
+#'   \item{T_DAILY_AVG}{Average daily temperature in degrees Celsius}
+#'   \item{P_DAILY_CALC}{Calculated daily precipitation in millimeters}
+#'   \item{SOLARAD_DAILY}{Daily solar radiation in MJ/m^2}
 #' }
-#' @keywords internal
-#' @name all_daily_data
-NULL
+"all_data"
