@@ -1,0 +1,78 @@
+---
+title: "vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sunshower)
+library(dplyr)
+library(maps)
+library(mgcv)
+library(ggplot2)
+library(lubridate)
+library(RColorBrewer)
+library(GpGp)
+```
+
+```{r}
+# Time Series for Station 53878
+data("all_data.Rdata")
+print(all_data)
+station1_data <- timeser(all_data, 53878)
+print(station1_data)
+```
+
+```{r}
+# Yearly cycle for station 53878 in 2023
+data("all_data")
+yearly_cycle <- estimate_yearly_cycle(53878, "2023")
+print(yearly_cycle)
+```
+
+```{r}
+# Estimate temperature trends for station 53878
+data("all_data")
+trends <- estimate_temp_trend(53878)
+print(trends)
+```
+
+```{r}
+# Create a grid with a resolution of 1 degree
+usa_grid <- create_usa_grid()
+plot(usa_grid)
+```
+
+```{r}
+# estimate the temperature on March 1st, 2023 for USA map grid points with a given resolution
+# create an example USA map grid points with resolution of 1
+data("all_data")
+usa_grid <- create_usa_grid(resolution = 1)
+data2 <- df %>% filter(LST_DATE == "2023-03-01")
+prediction_value <- data2$T_DAILY_MEAN
+grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
+print(grid_pred)
+```
+
+```{r}
+# create a heatmap for the estimated temperature on March 1st, 2023 for USA map
+# grid points with a given resolution
+data("all_data")
+usa_grid <- create_usa_grid(resolution = 1)
+data2 <- df %>% filter(LST_DATE == "2023-03-01")
+prediction_value <- data2$T_DAILY_MEAN
+grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
+output <- map_predictions(grid_pred, usa_grid)
+print(output)
+```
+
