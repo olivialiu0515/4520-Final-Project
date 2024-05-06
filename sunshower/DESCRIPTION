@@ -15,6 +15,8 @@ Imports:
     lubridate,
     mgcv,
     ggplot2
+    RColorBrewer
+    GpGp
 Suggests:
     rmarkdown,
     knitr,
