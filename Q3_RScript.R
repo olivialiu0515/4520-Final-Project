@@ -49,3 +49,4 @@ all_data <- all_data %>%
   select(WBANNO, state, station_name,everything())
 
 saveRDS(all_data, "/Users/olivialiu/Desktop/all_daily_data.RData")
+
