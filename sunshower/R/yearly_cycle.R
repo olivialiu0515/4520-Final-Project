@@ -15,6 +15,8 @@
 #' plot(yearly_cycle$day_of_year, yearly_cycle$expected_temp, type = "l",
 #'      main = "Estimated Yearly Temperature Cycle",
 #'      xlab = "Day of the Year", ylab = "Temperature (°C)")
+#' @import dplyr
+#' @importFrom stats nls predict
 #' @export
 
 estimate_yearly_cycle <- function(station_id, year) {

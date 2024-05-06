@@ -21,6 +21,7 @@
 #' # Extract data for station 1 from 2023-01-02
 #' station1_data_jan2 <- timeser(data, 1, as.Date("2023-01-02"))
 #' print(station1_data_jan2)
+#' @import dplyr
 #' @export
 
 timeser <- function(df, station_id, start_date = NULL, end_date = NULL) {

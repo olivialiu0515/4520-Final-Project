@@ -14,6 +14,7 @@
 #' usa_grid <- create_usa_grid()
 #' # Create a higher resolution grid of 0.5 degrees
 #' finer_usa_grid <- create_usa_grid(0.5)
+#' @import maps
 #' @export
 
 create_usa_grid <- function(resolution = 1) {

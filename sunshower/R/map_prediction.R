@@ -6,6 +6,10 @@
 #' @param grid_prediction weather predictions made for USA map grids.
 #' @param usa_grid a list of grid points of USA map with a longitude column and a latitude column. 
 #'        This should be identical with the one used to make predictions.
+#'
+#' @return A ggplot object representing a heat map of the weather predictions across the USA map grid points.
+#'         The heat map displays the geographic distribution of predicted temperatures on the USA map contour. 
+#'         
 #' @examples 
 #' # create a heatmap for the estamted temperature on March 1st, 2023 for USA map grid points with a given resolution
 #' #create an example USA map grid points with resolution of 1
@@ -18,6 +22,8 @@
 #' grid_prediction <- grid_prediction(usa_grid, data, prediction_value)
 #' map_predictions(predictions, usa_grid)
 #' 
+#' @import ggplot2 
+#' @import RColorBrewer
 #' @export
 map_predictions <- function(grid_prediction, usa_grid) {
   map_usa <- map_data("usa")

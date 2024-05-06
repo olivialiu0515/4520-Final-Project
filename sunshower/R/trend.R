@@ -14,6 +14,9 @@
 #' plot(trends$day_of_year, trends$predicted_temp, type = "l",
 #'      main = "Predicted Temperature Trends",
 #'      xlab = "Day of the Year", ylab = "Predicted Temperature (°C)")
+#' @import dplyr
+#' @import mgcv 
+#' @import lubridate
 #' @export
 
 estimate_temp_trend <- function(station_id) {
