@@ -23,7 +23,6 @@ function to the day of the year to capture seasonal temperature variations.
 }
 \examples{
 # Estimate the temperature cycle for station 53878 in the year 2023
-df <- data("all_daily_data")
 yearly_cycle <- estimate_yearly_cycle(53878, "2023")
 print(yearly_cycle)
 }

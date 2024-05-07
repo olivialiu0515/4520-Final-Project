@@ -48,7 +48,8 @@ all_data[all_data < -1000] <- NA
 all_data <- all_data %>%
   select(WBANNO, state, station_name,everything())
 
-save(all_data, file = "/Users/gengxingshuo/Desktop/4520-Final-Project/sunshower/data/all_data.Rdata")
+save(all_data, file = "data/all_data.RData", compress = "xz")
 
+getwd()
 
 

@@ -21,7 +21,6 @@ year and a smooth seasonal component for the day of the year.
 }
 \examples{
 # Estimate temperature trends for station 53878
-df <- data("all_daily_data")
 trends <- estimate_temp_trend(53878)
 print(trends)
 }

@@ -13,9 +13,10 @@
 #' @examples
 #' # estimate the temperature on March 1st, 2023 for USA map grid points with a given resolution
 #' # create an example USA map grid points with resolution of 1
-#' df <- data("all_daily_data")
-#' usa_grid <- create_usa_grid(resolution = 1)
-#' data2 <- df %>% filter(LST_DATE == "2023-03-01")
+#' library(dplyr)
+#‘ data("all_data")
+#' usa_grid <- create_usa_grid(resolution = 2)
+#' data2 <- all_data %>% filter(LST_DATE == "2023-03-01")
 #' prediction_value <- data2$T_DAILY_MEAN
 #' grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
 #' print(grid_pred)

@@ -14,13 +14,13 @@
 #' # create a heatmap for the estimated temperature on March 1st, 2023 for USA map
 #' # grid points with a given resolution
 #' # create an example USA map grid points with resolution of 1
-#' df <- data("all_daily_data")
-#' usa_grid <- create_usa_grid(resolution = 1)
-#' data2 <- df %>% filter(LST_DATE == "2023-03-01")
+#' library(dplyr)
+#' data("all_data")
+#' usa_grid <- create_usa_grid(resolution = 2)
+#' data2 <- all_data %>% filter(LST_DATE == "2023-03-01")
 #' prediction_value <- data2$T_DAILY_MEAN
 #' grid_pred <- grid_prediction(usa_grid, data2, prediction_value)
-#' output <- map_predictions(grid_pred, usa_grid)
-#' print(output)
+#' map_predictions(grid_pred, usa_grid)
 #' @import ggplot2
 #' @import RColorBrewer
 #' @export
@@ -34,7 +34,7 @@ map_predictions <- function(grid_prediction, usa_grid) {
   # Plot the map with grid points and predicted temperature using a different color gradient
   ggplot() +
     geom_polygon(data = map_usa, aes(x = long, y = lat, group = group), fill = "white", color = "grey") +
-    geom_point(data = usa_grid, aes(x = lon, y = lat, color = predictions), size = 2) +
+    geom_point(data = usa_grid, aes(x = lon, y = lat, color = grid_prediction), size = 2) +
     scale_color_gradientn(colors = colors, name = "Temperature") +  # Color gradient
     labs(title = "Predicted Temperature for USA Grid Points",
          x = "Longitude", y = "Latitude") +  # Set x and y axis labels

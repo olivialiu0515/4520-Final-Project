@@ -11,6 +11,7 @@ Description: Functions for analyzing and visualizing climate patterns across the
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 Imports:
     dplyr,
     maps,

@@ -10,7 +10,7 @@
 #'         the specified range of years.
 #' @examples
 #' # Estimate temperature trends for station 53878
-#' df <- data("all_daily_data")
+#‘ data("all_data")
 #' trends <- estimate_temp_trend(53878)
 #' print(trends)
 #' @import dplyr
@@ -19,7 +19,7 @@
 #' @export
 
 estimate_temp_trend <- function(station_id) {
-  data <- df %>%
+  data <- all_data %>%
     filter(WBANNO == station_id) %>%
     mutate(date = as.Date(LST_DATE), year = year(date), day_of_year = yday(date)) %>%
     group_by(year, day_of_year) %>%

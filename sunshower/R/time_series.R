@@ -13,12 +13,11 @@
 #'        optional start and end dates.
 #' @examples
 #' # Example 1
-#' df <- data("all_daily_data")
-#' # Extract data for station 53878
-#' station1_data <- timeser(df, 53878)
+#' data("all_data")
+#' station1_data <- timeser(all_data, 53878)
 #' print(station1_data)
 #' # Example 2 Extract data for station 53878 from 2023-01-02
-#' station1_data_jan2 <- timeser(df, 53878, "2023-01-02")
+#' station1_data_jan2 <- timeser(all_data, 53878, "2023-01-02")
 #' print(station1_data_jan2)
 #' @import dplyr
 #' @export

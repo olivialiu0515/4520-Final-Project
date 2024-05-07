@@ -11,7 +11,7 @@
 #'         expected_temp contains the predicted temperatures for these days.
 #' @examples
 #' # Estimate the temperature cycle for station 53878 in the year 2023
-#' df <- data("all_daily_data")
+#‘ data("all_data")
 #' yearly_cycle <- estimate_yearly_cycle(53878, "2023")
 #' print(yearly_cycle)
 #' @import dplyr
@@ -19,7 +19,7 @@
 #' @export
 
 estimate_yearly_cycle <- function(station_id, year) {
-  data <- df %>% filter(WBANNO == station_id) %>% filter(format(LST_DATE, "%Y") == year)
+  data <- all_data %>% filter(WBANNO == station_id) %>% filter(format(LST_DATE, "%Y") == year)
   data$day_of_year <- yday(data[["LST_DATE"]])
   days <- max(data$day_of_year)
   formula_str <- T_DAILY_MEAN ~ a + b * cos(2 * pi * day_of_year / days) + c * sin(2 * pi * day_of_year / days)
